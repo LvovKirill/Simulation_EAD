@@ -45,6 +45,7 @@
         <TableRow>
 
             <Button
+                android:id="@+id/btn_mind"
                 android:layout_weight="1"
                 android:text="@string/mind"
                 tools:ignore="ButtonStyle"
@@ -52,6 +53,7 @@
                 android:elevation="10dp"/>
 
             <Button
+                android:id="@+id/btn_happiness"
                 android:layout_weight="1"
                 android:text="@string/happiness"
                 tools:ignore="ButtonStyle,RtlHardcoded"
@@ -59,6 +61,7 @@
                 android:elevation="10dp"/>
 
             <Button
+                android:id="@+id/btn_affairs"
                 android:layout_weight="1"
                 android:text="@string/affairs"
                 tools:ignore="ButtonStyle,RtlHardcoded"
