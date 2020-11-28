@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="136dp"
+        android:layout_height="57dp"
+        android:layout_above="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Школьные годы:"
+        android:textColor="@color/black"
+        android:textSize="25dp"/>
+
+
+    <TableLayout
+        android:id="@+id/modifyDateChangeContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:columnCount="3"
+        android:gravity="center_horizontal"
+        android:rowCount="1"
+        android:weightSum="2">
+
+        <TableRow>
+
+            <Button
+                android:layout_weight="1"
+                android:text="@string/mind"
+                tools:ignore="ButtonStyle"
+                android:background="@drawable/white_no_shape_button_style"
+                android:elevation="10dp"/>
+
+            <Button
+                android:layout_weight="1"
+                android:text="@string/happiness"
+                tools:ignore="ButtonStyle,RtlHardcoded"
+                android:background="@drawable/white_no_shape_button_style"
+                android:elevation="10dp"/>
+
+            <Button
+                android:layout_weight="1"
+                android:text="@string/affairs"
+                tools:ignore="ButtonStyle,RtlHardcoded"
+                android:background="@drawable/white_no_shape_button_style"
+                android:elevation="10dp"/>
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

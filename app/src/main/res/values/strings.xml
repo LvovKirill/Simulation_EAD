@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Simulation_EAD</string>
+    <string name="mind">Ум</string>
+    <string name="requirements">Потребности</string>
+    <string name="happiness">Счастье</string>
+    <string name="rest">Отдых</string>
+    <string name="affairs">Дела</string>
+    <string name="make">сделать</string>
+</resources>

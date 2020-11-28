@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/modifyDateChangeContainer"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="0dp"
+    android:columnCount="3"
+    android:gravity="center_horizontal"
+    android:rowCount="1"
+    android:weightSum="2">
+
+    <TableRow>
+
+        <ImageView
+            android:id="@+id/imageEvant"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="10dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textEvant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="10dp"
+            tools:text="Поджечь свинью"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:text="@string/make"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="10dp"
+            />
+    </TableRow>
+</TableLayout>
