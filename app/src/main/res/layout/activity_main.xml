@@ -6,14 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.example.simulation_ead.StatusFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginBottom="20dp"
+        tools:layout="@layout/fragment_status">
+    </fragment>
+    </RelativeLayout>
 
-    <ImageView
+    <androidx.cardview.widget.CardView
         android:id="@+id/imageView"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:cardCornerRadius="30dp">
+    <ImageView
+        android:id="@+id/image_lvl"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image_lvl_1" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/textView"
@@ -55,7 +77,7 @@
             <Button
                 android:id="@+id/btn_happiness"
                 android:layout_weight="1"
-                android:text="@string/happiness"
+                android:text="@string/rest"
                 tools:ignore="ButtonStyle,RtlHardcoded"
                 android:background="@drawable/white_no_shape_button_style"
                 android:elevation="10dp"/>

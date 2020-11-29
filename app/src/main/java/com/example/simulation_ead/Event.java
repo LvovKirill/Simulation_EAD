@@ -8,19 +8,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Event{
     int mind;
-    int requirements;
+    int rest;
     int happiness;
     int lvl_access;
-    String event_class;
     String event;
 
+    public int getMind() {
+        return mind;
+    }
 
-    Event (int mind, int requirements, int happiness, int lvl_access, String event_class, String event){
+    public int getRequirements() {
+        return rest;
+    }
+
+    public int getHappiness() {
+        return happiness;
+    }
+
+    Event (int mind, int rest, int happiness, int lvl_access, String event){
         this.mind=mind;
-        this.requirements=requirements;
+        this.rest=rest;
         this.happiness=happiness;
         this.lvl_access=lvl_access;
-        this.event_class=event_class;
         this.event=event;
     }
 
@@ -29,3 +38,63 @@ public class Event{
     }
 
 }
+
+
+
+
+
+
+
+
+//        public void progress_make(int change_mind, int change_rest, int change_affairs) {
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//        while (StatusFragment.progress_mind < 100) {
+//            handler.post(new Runnable() {
+//                @Override
+//                public void run() {
+//                    StatusFragment.progressbar_mind.setProgress(StatusFragment.progress_mind);
+//                }
+//            });
+//            StatusFragment.progress_mind += change_mind;
+//        }
+//
+//                }
+//            }).start();
+//
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//        while (StatusFragment.progress_rest < 100) {
+//            handler.post(new Runnable() {
+//                @Override
+//                public void run() {
+//                    StatusFragment.progressbar_rest.setProgress(StatusFragment.progress_rest);
+//                }
+//            });
+//            StatusFragment.progress_rest += change_rest;
+//        }
+//
+//                }
+//            }).start();
+//
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//        while (StatusFragment.progress_affairs < 100) {
+//            handler.post(new Runnable() {
+//                @Override
+//                public void run() {
+//                    StatusFragment.progressbar_affairs.setProgress(StatusFragment.progress_affairs);
+//                }
+//            });
+//            StatusFragment.progress_affairs += change_affairs;
+//        }
+//
+//                }
+//            }).start();
+//    }

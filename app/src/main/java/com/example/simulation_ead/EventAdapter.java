@@ -7,18 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.android.material.button.MaterialButtonToggleGroup;
 
 public class EventAdapter extends BaseAdapter {
     Context ctx;
     LayoutInflater lInflater;
     ArrayList<Event> objects;
+
+    public ArrayList<Event> getObjects() {
+        return objects;
+    }
 
     EventAdapter(Context context, ArrayList<Event> events) {
         ctx = context;
@@ -45,7 +44,6 @@ public class EventAdapter extends BaseAdapter {
     // пункт списка
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // используем созданные, но не используемые view
         View view = convertView;
         if (view == null) {
             view = lInflater.inflate(R.layout.list_item, parent, false);
@@ -56,8 +54,41 @@ public class EventAdapter extends BaseAdapter {
         ((ImageView) view.findViewById(R.id.imageEvant)).setImageResource(R.drawable.ic_home_and_money);
         ((TextView) view.findViewById(R.id.textEvant)).setText(p.event);
 
+
+
         Button button = (Button) view.findViewById(R.id.btn_make);
-        button.setOnClickListener(myButtonClick);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                int mind = p.getMind();
+                int happiness = p.getHappiness();
+                int requirements = p.getRequirements();
+
+                StatusFragment.progress_mind += mind;
+                StatusFragment.progress_rest += happiness;
+                StatusFragment.progress_affairs += requirements;
+                StatusFragment.progress_lvl += 2;
+
+                StatusFragment.setProgress_mind();
+                StatusFragment.setProgress_rest();
+                StatusFragment.setProgress_affairs();
+                StatusFragment.setProgress_lvl();
+
+                if(StatusFragment.progress_lvl==100){
+                    MainActivity.newLvl();
+                }
+                if (StatusFragment.progress_mind<=0 || StatusFragment.progress_rest<=0 || StatusFragment.progress_affairs<=0){
+                    MainActivity.restartGame();
+
+                    StatusFragment.setProgress_mind();
+                    StatusFragment.setProgress_rest();
+                    StatusFragment.setProgress_affairs();
+                    StatusFragment.setProgress_lvl();
+                }
+
+            }
+        });
+
 
         return view;
     }
@@ -66,23 +97,5 @@ public class EventAdapter extends BaseAdapter {
         return ((Event) getItem(position));
     }
 
-
-//    ArrayList<Event> getEvent() {
-//        ArrayList<Event> event = new ArrayList<Event>();
-//        for (Event p : objects) {
-//            // если в корзине
-//            if (p.event)
-//                event.add(p);
-//        }
-//        return event;
-//    }
-
-    // обработчик для чекбоксов
-
-    View.OnClickListener myButtonClick = new View.OnClickListener(){
-        @Override
-        public void onClick(View v) {
-        }
-    };
 
 }

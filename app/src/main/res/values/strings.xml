@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Simulation_EAD</string>
+    <string name="app_name">Симулятор ЕАД</string>
     <string name="mind">Ум</string>
     <string name="requirements">Потребности</string>
     <string name="happiness">Счастье</string>

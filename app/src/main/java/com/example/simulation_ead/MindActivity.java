@@ -1,6 +1,9 @@
 package com.example.simulation_ead;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -22,32 +25,27 @@ public void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_mind);
 
-// создаем адаптер
+//    Fragment fragment_status = new StatusFragment();
+//    final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//    transaction.add(R.id.mind_status_container, fragment_status);
+//    transaction.commit();
+
+
 fillData();
 eventAdapter = new EventAdapter(this, events);
 
-// настраиваем список
 ListView lvMain = (ListView) findViewById(R.id.listView_mind);
 lvMain.setAdapter(eventAdapter);
 }
 
-// генерируем данные для адаптера
         void fillData() {
-
-events.add(new Event("Product "));
-events.add(new Event("Prrewre"));
-events.add(new Event("Proerfrerfect "));
-events.add(new Event("erwfwerf "));
-events.add(new Event("Product "));
+events.add(new Event(10, -5, -5, 1, "Учить физку"));
+events.add(new Event(10, -5, -5, 1, "Учить математику"));
+events.add(new Event(10, -5, -5, 2, "Учить С++"));
+events.add(new Event(10, -5, -5, 2, "Готовиться к ПКР"));
+events.add(new Event(10, -5, -5, 2, "Готовиться к ЕГЭ"));
+events.add(new Event(20, -5, -5, 3, "Учить высшую математику"));
 }
-       // выводим информацию о корзине
-//        public void showResult(View v) {
-//String result = "Товары в корзине:";
-//for (Event p : eventAdapter.getEvent()) {
-//if (p.box)
-//result += "\n" + p.event;
-//}
-//Toast.makeText(this, result, Toast.LENGTH_LONG).show();
-//}
+
 
 }
