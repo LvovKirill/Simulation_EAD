@@ -1,5 +1,6 @@
 package com.example.simulation_ead;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,6 +22,7 @@ public class StatusFragment extends Fragment {
     public static ProgressBar progressbar_rest;
     public static ProgressBar progressbar_affairs;
     public static ProgressBar progressbar_lvl;
+    public static TextView textView_lvl;
     private static MindActivity mindActivity;
     Handler handler = new Handler();
 
@@ -28,20 +32,21 @@ public class StatusFragment extends Fragment {
     public static int progress_affairs = 100;
     public static int progress_lvl = 0;
 
+
     public static void setProgress_mind() {
         progressbar_mind.setProgress(progress_mind);
     }
     public static void setProgress_rest() {
         progressbar_rest.setProgress(progress_rest);
     }
-
     public static void setProgress_affairs() {
         progressbar_affairs.setProgress(progress_affairs);
     }
-
     public static void setProgress_lvl() {
         progressbar_lvl.setProgress(progress_lvl);
     }
+
+
 
 
 
@@ -55,14 +60,18 @@ public class StatusFragment extends Fragment {
         progressbar_rest = (ProgressBar)rootView.findViewById(R.id.progress_rest);
         progressbar_affairs = (ProgressBar)rootView.findViewById(R.id.progress_affairs);
         progressbar_lvl = (ProgressBar)rootView.findViewById(R.id.progress_lvl);
+        textView_lvl = (TextView)rootView.findViewById(R.id.lvl);
 
         progressbar_mind.setProgress(progress_mind);
         progressbar_rest.setProgress(progress_rest);
         progressbar_affairs.setProgress(progress_affairs);
         progressbar_lvl.setProgress(progress_lvl);
+        textView_lvl.setText(Integer.valueOf(MainActivity.lvl).toString());
 
         return rootView;
     }
+
+
 
 //    public void progress_make() {
 

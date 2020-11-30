@@ -6,26 +6,55 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/image_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/lyzey_photo" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/white_prozr" />
+
     <fragment
-        android:id="@+id/fragment1"
+        android:id="@+id/fragment2"
         android:name="com.example.simulation_ead.StatusFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginBottom="20dp"
         tools:layout="@layout/fragment_status">
     </fragment>
-    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:orientation="vertical"
+        android:background="@drawable/background_lvl_style"
+        android:elevation="20dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="fill_parent"
+            android:layout_height="57dp"
+            android:layout_above="@+id/imageView"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="10 класс"
+            android:textColor="@color/black"
+            android:textSize="25dp"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/imageView"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_gravity="center_horizontal"
         app:cardCornerRadius="30dp">
     <ImageView
         android:id="@+id/image_lvl"
@@ -35,20 +64,10 @@
         android:layout_centerVertical="true"
         android:scaleType="centerCrop"
         android:src="@drawable/image_lvl_1" />
+
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="136dp"
-        android:layout_height="57dp"
-        android:layout_above="@+id/imageView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="Школьные годы:"
-        android:textColor="@color/black"
-        android:textSize="25dp"/>
+    </LinearLayout>
 
 
     <TableLayout
@@ -91,5 +110,39 @@
                 android:elevation="10dp"/>
         </TableRow>
     </TableLayout>
+
+    <ImageButton
+        android:id="@+id/advertising_smile"
+        android:background="@drawable/background_lvl_style"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/modifyDateChangeContainer"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="15dp"
+        app:srcCompat="@drawable/ic_smiling" />
+
+    <ImageButton
+        android:id="@+id/advertising_heart"
+        android:background="@drawable/background_lvl_style"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/modifyDateChangeContainer"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toStartOf="@+id/advertising_smile"
+        app:srcCompat="@drawable/ic_heart" />
+
+    <ImageButton
+        android:id="@+id/imageView2"
+        android:background="@drawable/background_lvl_style"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/modifyDateChangeContainer"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toStartOf="@+id/advertising_heart"
+        app:srcCompat="@drawable/ic_brain" />
+
 
 </RelativeLayout>

@@ -15,16 +15,15 @@
             android:name="com.example.simulation_ead.StatusFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+
             tools:layout="@layout/fragment_status">
         </fragment>
 
     <ListView
         android:id="@+id/listView_mind"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ListView>
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"/>
 
     </LinearLayout>
-
 </RelativeLayout>

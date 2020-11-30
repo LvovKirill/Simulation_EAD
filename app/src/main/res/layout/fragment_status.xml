@@ -2,26 +2,36 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="300dp"
     tools:context=".StatusFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/white_no_shape_button_style"
-        android:elevation="10dp">
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/background_status_fragment_style"
+        android:elevation="3dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/background_lvl_style"
+        android:elevation="3dp">
 
         <ImageView
             android:id="@+id/icon_brain"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginVertical="2dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginVertical="5dp"
             android:layout_marginHorizontal="10dp"
             android:src="@drawable/ic_brain" />
 
@@ -29,17 +39,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_toEndOf="@+id/icon_brain"
             android:text="@string/mind"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
 
         <ProgressBar
             android:id="@+id/progress_mind"
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="10dp"
+            android:progressDrawable="@drawable/progressbar_brain_style"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="20dp" />
@@ -51,31 +62,36 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="3dp"
+            android:background="@drawable/background_lvl_style"
+            android:elevation="3dp">
 
             <ImageView
                 android:id="@+id/icon_rest"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="2dp"
+                android:layout_marginVertical="5dp"
                 android:src="@drawable/ic_heart" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:layout_toEndOf="@+id/icon_rest"
                 android:text="@string/rest"
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
 
             <ProgressBar
                 android:id="@+id/progress_rest"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="10dp"
+                android:progressDrawable="@drawable/progressbar_heart_style"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp" />
@@ -88,14 +104,18 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="3dp"
+            android:background="@drawable/background_lvl_style"
+            android:elevation="3dp">
 
             <ImageView
                 android:id="@+id/icon"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_centerVertical="true"
-                android:layout_marginVertical="2dp"
+                android:layout_marginVertical="5dp"
                 android:layout_marginHorizontal="10dp"
                 android:src="@drawable/ic_smiling" />
 
@@ -103,17 +123,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:layout_toEndOf="@+id/icon"
                 android:text="@string/happiness"
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
 
             <ProgressBar
                 android:id="@+id/progress_affairs"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="10dp"
+                android:progressDrawable="@drawable/progressbar_smile_style"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp" />
@@ -137,17 +158,29 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="lvl"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
 
+                <TextView
+                    android:id="@+id/lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="1dp"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
             <ProgressBar
                 android:id="@+id/progress_lvl"
                 style="?android:attr/progressBarStyleHorizontal"
+                android:progressDrawable="@drawable/progressbar_lvl_style"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="10dp"/>
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="5dp"/>
             </LinearLayout>
         </RelativeLayout>
 
@@ -157,4 +190,5 @@
 
 
     </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>

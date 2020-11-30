@@ -2,19 +2,28 @@ package com.example.simulation_ead;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Level level = new Level(1, R.drawable.image_lvl_1, 10, "Школьные годы");
+//    Level level = new Level(1, R.drawable.image_lvl_1, 10, "Школьные годы");
 
     public static TextView textView;
     public static ImageView imageView;
+    public static ImageView imageView_background;
     public static int lvl = 1;
 
 
@@ -28,8 +37,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btn_happiness = (Button)findViewById(R.id.btn_happiness);
         Button btn_affairs = (Button)findViewById(R.id.btn_affairs);
 
+        ImageButton btn_admob_smile = (ImageButton)findViewById(R.id.advertising_smile);
+
+
+
+
         textView = (TextView)findViewById(R.id.textView);
         imageView = (ImageView)findViewById(R.id.image_lvl);
+        imageView_background = (ImageView)findViewById(R.id.image_background);
 
         btn_mind.setOnClickListener(this);
         btn_happiness.setOnClickListener(this);
@@ -52,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent affairs = new Intent(MainActivity.this, AffairsActivity.class);
                 startActivity(affairs);
                 break;
+            case R.id.advertising_smile:
+
+                break;
         }
 
 
@@ -59,17 +77,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     static Level mas_lvl[] = {
-            new Level(1, R.drawable.image_lvl_1, 10, "Бакалавр МИФИ"),
-            new Level(2, R.drawable.image_lvl_2, 8, "Бакалавр МИФИ"),
-            new Level(3, R.drawable.image_lvl_2, 6, "Магистр МИФИ"),
-            new Level(4, R.drawable.image_lvl_2, 4, "Аспирант МИФИ")
+            new Level(1, R.drawable.image_lvl_1, 10, R.drawable.lyzey_photo, "10 класс"),
+            new Level(2, R.drawable.image_lvl_2, 8, R.drawable.lyzey_photo, "11 класс"),
+            new Level(3, R.drawable.image_lvl_3, 6, R.drawable.miphi_photo2, "Бакалавр МИФИ 1"),
+            new Level(4, R.drawable.image_lvl_4, 4, R.drawable.miphi_photo2, "Бакалавр МИФИ 2"),
+            new Level(5, R.drawable.image_lvl_5, 4, R.drawable.miphi_photo, "Магистр МИФИ 1"),
+            new Level(6, R.drawable.image_lvl_6, 4, R.drawable.miphi_photo, "Магистр МИФИ 2"),
+            new Level(7, R.drawable.image_lvl_7, 4, R.drawable.miphi_photo, "Аспирант МИФИ 1"),
+            new Level(8, R.drawable.image_lvl_8, 4, R.drawable.miphi_photo, "Аспирант МИФИ 2"),
+            new Level(9, R.drawable.image_lvl_9, 4, R.drawable.miphi_photo, "Крутой"),
+            new Level(10, R.drawable.image_lvl_10, 4, R.drawable.miphi_photo, "Super-крутой"),
     };
 
     public static void newLvl(){
         lvl += 1;
         textView.setText(mas_lvl[lvl-1].name_lvl);
         imageView.setImageResource(mas_lvl[lvl-1].image_lvl);
-
+        imageView_background.setImageResource(mas_lvl[lvl-1].background_lvl);
+        StatusFragment.textView_lvl.setText(Integer.valueOf(lvl).toString());
         StatusFragment.progress_mind = 100;
         StatusFragment.progress_rest = 100;
         StatusFragment.progress_affairs = 100;
@@ -77,14 +102,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public static void restartGame(){
-
-        textView.setText("Я крут");
-        imageView.setImageResource(R.drawable.image_lvl_1);
-
+        lvl = 1;
+        textView.setText(mas_lvl[lvl-1].name_lvl);
+        imageView.setImageResource(mas_lvl[lvl-1].image_lvl);
+        imageView_background.setImageResource(mas_lvl[lvl-1].background_lvl);
+        StatusFragment.textView_lvl.setText(Integer.valueOf(lvl).toString());
         StatusFragment.progress_mind = 100;
         StatusFragment.progress_rest = 100;
         StatusFragment.progress_affairs = 100;
         StatusFragment.progress_lvl = 0;
 
+    }
+
+    public static boolean createAccessIndicatorForEvent(int lvl){
+     if (MainActivity.lvl<lvl)
+         return false;
+     else return true;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 }

@@ -28,10 +28,11 @@ public class RestActivity extends AppCompatActivity {
     }
 
     void fillData() {
-        events.add(new Event(-9, 10, -5, 1, "Попать в сталовой лицея"));
-        events.add(new Event(-9, 10, -5, 1, "Поесть дома"));
-        events.add(new Event(-9, 10, -5, 1, "Поесть в сталовой МИФИ"));
-        events.add(new Event(-8, 15, -5, 1, "Поесть в ресторане"));
-        events.add(new Event(-5, 10, -5, 1, "Поесть в BurgerKing"));
+        events.add(new Event(-9, 10, -5, 1,R.drawable.ic_food, "Поесть в сталовой лицея", MainActivity.createAccessIndicatorForEvent(1)));
+        events.add(new Event(-9, 10, -5, 1,R.drawable.ic_breakfast, "Поесть дома", MainActivity.createAccessIndicatorForEvent(1)));
+        events.add(new Event(-9, 10, -5, 1,R.drawable.ic_food_serving, "Поесть в сталовой МИФИ", MainActivity.createAccessIndicatorForEvent(1)));
+        events.add(new Event(-5, 10, -5, 1,R.drawable.ic_hamburger, "Поесть в BurgerKing", MainActivity.createAccessIndicatorForEvent(1)));
+        events.add(new Event(-8, 15, -5, 1,R.drawable.ic_pizza, "Заказать пиццу", MainActivity.createAccessIndicatorForEvent(1)));
+        events.add(new Event(-8, 15, -5, 1,R.drawable.ic_food_serving, "Поесть в ресторане", MainActivity.createAccessIndicatorForEvent(1)));
     }
 }

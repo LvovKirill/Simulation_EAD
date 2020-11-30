@@ -15,7 +15,6 @@
             android:name="com.example.simulation_ead.StatusFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             tools:layout="@layout/fragment_status">
         </fragment>
 

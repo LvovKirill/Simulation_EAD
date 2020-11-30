@@ -11,7 +11,9 @@ public class Event{
     int rest;
     int happiness;
     int lvl_access;
+    int icon_event;
     String event;
+    boolean status;
 
     public int getMind() {
         return mind;
@@ -25,12 +27,14 @@ public class Event{
         return happiness;
     }
 
-    Event (int mind, int rest, int happiness, int lvl_access, String event){
+    Event (int mind, int rest, int happiness, int lvl_access, int icon_event, String event, boolean status){
         this.mind=mind;
         this.rest=rest;
         this.happiness=happiness;
         this.lvl_access=lvl_access;
+        this.icon_event=icon_event;
         this.event=event;
+        this.status = status;
     }
 
     Event(String event){

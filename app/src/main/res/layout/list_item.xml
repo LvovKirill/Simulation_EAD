@@ -4,7 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
+    android:layout_height="wrap_content">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/background_lvl_style"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
+        android:elevation="5dp">
 
         <ImageView
             android:id="@+id/imageEvant"
@@ -22,7 +32,8 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/imageEvant"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="18dp"
+        android:layout_marginHorizontal="5dp"
         tools:text="Поджечь свинью" />
 
     <Button
@@ -33,6 +44,11 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="25dp"
         android:onClick="onClick"
-        android:text="@string/make" />
+        android:text="@string/make"
+        android:textColor="@color/white"
+        android:textSize="10dp"
+        android:layout_marginVertical="8dp"
+        android:background="@drawable/background_lvl_style"/>
 
+    </RelativeLayout>
 </RelativeLayout>
