@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,11 @@ public class StatusFragment extends Fragment {
     public static ProgressBar progressbar_affairs;
     public static ProgressBar progressbar_lvl;
     public static TextView textView_lvl;
+
+    public static ImageView imageView_progress_brain;
+    public static ImageView imageView_progress_rest;
+    public static ImageView imageView_progress_affairs;
+
     private static MindActivity mindActivity;
     Handler handler = new Handler();
 
@@ -61,6 +67,10 @@ public class StatusFragment extends Fragment {
         progressbar_affairs = (ProgressBar)rootView.findViewById(R.id.progress_affairs);
         progressbar_lvl = (ProgressBar)rootView.findViewById(R.id.progress_lvl);
         textView_lvl = (TextView)rootView.findViewById(R.id.lvl);
+
+        imageView_progress_brain = (ImageView) rootView.findViewById(R.id.icon_brain);
+        imageView_progress_rest = (ImageView) rootView.findViewById(R.id.icon_rest);
+        imageView_progress_affairs = (ImageView) rootView.findViewById(R.id.icon_affairs);
 
         progressbar_mind.setProgress(progress_mind);
         progressbar_rest.setProgress(progress_rest);

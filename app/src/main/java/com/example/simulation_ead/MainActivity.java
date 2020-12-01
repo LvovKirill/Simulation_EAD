@@ -1,11 +1,15 @@
 package com.example.simulation_ead;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -17,6 +21,8 @@ import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
+import static com.example.simulation_ead.R.raw.sound_rest;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 //    Level level = new Level(1, R.drawable.image_lvl_1, 10, "Школьные годы");
@@ -24,8 +30,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static TextView textView;
     public static ImageView imageView;
     public static ImageView imageView_background;
+    public static CardView cardView;
     public static int lvl = 1;
 
+    private MediaPlayer sound;
 
 
     @Override
@@ -45,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView = (TextView)findViewById(R.id.textView);
         imageView = (ImageView)findViewById(R.id.image_lvl);
         imageView_background = (ImageView)findViewById(R.id.image_background);
+        cardView = (CardView) findViewById(R.id.imageView);
 
         btn_mind.setOnClickListener(this);
         btn_happiness.setOnClickListener(this);
@@ -114,6 +123,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
+    public void recreate(){
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
+    }
+
     public static boolean createAccessIndicatorForEvent(int lvl){
      if (MainActivity.lvl<lvl)
          return false;
@@ -122,6 +139,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onStart() {
+//        Intent questionIntent = new Intent(MainActivity.this,
+//                MindActivity.class);
+//        startActivityForResult(questionIntent, 5;
+//        overridePendingTransition(R.anim.diagonaltranslate,R.anim.alpha);
         super.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        finish();
+//        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+//        overridePendingTransition(R.anim.diagonaltranslate, R.anim.diagonaltranslate);
+//        overridePendingTransition(0, 0);
+        super.onRestart();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        Animation animRotateIn_big = AnimationUtils.loadAnimation(this, R.anim.rotate);
+//        cardView.startAnimation(animRotateIn_big);
     }
 }

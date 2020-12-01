@@ -28,9 +28,9 @@ public class AffairsActivity extends AppCompatActivity {
     }
 
     void fillData() {
-        events.add(new Event(-5, -5, 10, 1, R.drawable.ic_atom, "Учить физку", MainActivity.createAccessIndicatorForEvent(1)));
-        events.add(new Event(-5, -5, 10, 1, R.drawable.ic_atom, "Учить физку", MainActivity.createAccessIndicatorForEvent(1)));
-        events.add(new Event(-5, -5, 10, 1, R.drawable.ic_atom, "Учить физку", MainActivity.createAccessIndicatorForEvent(1)));
+        events.add(new Event(-5, -5, 10, 1, R.drawable.ic_atom,3, "Учить физку", MainActivity.createAccessIndicatorForEvent(1)));
+        events.add(new Event(-5, -5, 10, 1, R.drawable.ic_atom,3,"Учить физку", MainActivity.createAccessIndicatorForEvent(1)));
+        events.add(new Event(-5, -5, 10, 1, R.drawable.ic_atom,3, "Учить физку", MainActivity.createAccessIndicatorForEvent(1)));
 
     }
 }

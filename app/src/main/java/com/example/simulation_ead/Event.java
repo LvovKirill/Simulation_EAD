@@ -12,6 +12,8 @@ public class Event{
     int happiness;
     int lvl_access;
     int icon_event;
+    int categoty;
+    // 1-ум 2-отдых 3-дела
     String event;
     boolean status;
 
@@ -27,12 +29,13 @@ public class Event{
         return happiness;
     }
 
-    Event (int mind, int rest, int happiness, int lvl_access, int icon_event, String event, boolean status){
+    Event (int mind, int rest, int happiness, int lvl_access, int icon_event, int categoty, String event, boolean status){
         this.mind=mind;
         this.rest=rest;
         this.happiness=happiness;
         this.lvl_access=lvl_access;
         this.icon_event=icon_event;
+        this.categoty=categoty;
         this.event=event;
         this.status = status;
     }
