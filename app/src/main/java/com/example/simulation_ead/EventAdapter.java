@@ -2,6 +2,7 @@ package com.example.simulation_ead;
 
 import java.util.ArrayList;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.example.simulation_ead.MainActivity.sharedPreferences_brain;
 import static com.example.simulation_ead.R.drawable.background_lvl_style;
 import static com.example.simulation_ead.R.raw.sound_affairs;
 import static com.example.simulation_ead.R.raw.sound_brain;
@@ -95,6 +98,12 @@ if (p.status == true) {
             StatusFragment.setProgress_affairs();
             StatusFragment.setProgress_lvl();
 
+            saveParams();
+
+//            SharedPreferences.Editor sv_lvl = MainActivity.sharedPreferences_lvl.edit();
+//            sv_lvl.putInt("progressbar_lvl", MainActivity.lvl);
+//            sv_lvl.commit();
+
                 Animation animRotateIn_big = AnimationUtils.loadAnimation(ctx, R.anim.puls);
             if (p.categoty==1)
                 StatusFragment.imageView_progress_brain.startAnimation(animRotateIn_big);
@@ -115,11 +124,14 @@ if (p.status == true) {
             if (StatusFragment.progress_lvl >= 100) {
                 MainActivity.newLvl();
 
+                saveParams();
+
                 soundPlay(4);
                 CustomToast.makeText(ctx, "Новый уровень", Toast.LENGTH_SHORT, 1, R.drawable.image_lvl_9).show();
 
-                MindActivity.lvMain.clearChoices();
-
+//                SharedPreferences.Editor sv_lvl = MainActivity.sharedPreferences_lvl.edit();
+//                sv_lvl.putInt("progressbar_lvl", MainActivity.lvl);
+//                sv_lvl.commit();
 
                 StatusFragment.setProgress_mind();
                 StatusFragment.setProgress_rest();
@@ -128,6 +140,8 @@ if (p.status == true) {
             }
             if (StatusFragment.progress_mind <= 0 || StatusFragment.progress_rest <= 0 || StatusFragment.progress_affairs <= 0) {
                 MainActivity.restartGame();
+
+                saveParams();
 
                 soundPlay(5);
                 CustomToast.makeText(ctx, "Провал. Сложно быть Егоровым?", Toast.LENGTH_LONG, 1, R.drawable.game_over_photo).show();
@@ -224,6 +238,25 @@ if (p.status == true) {
         }
         return result_mas;
     }
+
+    private void saveParams(){
+        SharedPreferences.Editor sv_brain = MainActivity.sharedPreferences_brain.edit();
+        sv_brain.putInt("progressbar_brain", StatusFragment.progress_mind);
+        sv_brain.commit();
+
+        SharedPreferences.Editor sv_rest = MainActivity.sharedPreferences_rest.edit();
+        sv_rest.putInt("progressbar_rest", StatusFragment.progress_rest);
+        sv_rest.commit();
+
+        SharedPreferences.Editor sv_affairs = MainActivity.sharedPreferences_affairs.edit();
+        sv_affairs.putInt("progressbar_affairs", StatusFragment.progress_affairs);
+        sv_affairs.commit();
+
+        SharedPreferences.Editor sv_progressbar_lvl = MainActivity.sharedPreferences_progressbar_lvl.edit();
+        sv_progressbar_lvl.putInt("progressbar_progressbar_lvl", StatusFragment.progress_lvl);
+        sv_progressbar_lvl.commit();
+    }
+
 
 
 
