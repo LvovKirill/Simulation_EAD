@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Simulation_EAD">
-        <activity android:name=".AffairsActivity"></activity>
+        <activity android:name=".FriendsActivity"></activity>
+        <activity android:name=".ShopActivity" />
+        <activity android:name=".SettingsActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+
+        <activity android:name=".AffairsActivity" />
         <activity android:name=".RestActivity" />
         <activity android:name=".MindActivity" />
         <activity android:name=".MainActivity">
@@ -19,11 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
     </application>
 
 </manifest>

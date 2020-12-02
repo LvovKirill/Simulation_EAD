@@ -46,6 +46,7 @@ public class MindActivity extends AppCompatActivity {
         events.add(new Event(10, -5, -5, 2, R.drawable.ic_test, 1, "Готовиться к ПКР", MainActivity.createAccessIndicatorForEvent(2)));
         events.add(new Event(10, -5, -5, 2, R.drawable.ic_paper, 1, "Готовиться к ЕГЭ", MainActivity.createAccessIndicatorForEvent(2)));
         events.add(new Event(20, -5, -5, 3, R.drawable.ic_integral, 1, "Учить высшую математику", MainActivity.createAccessIndicatorForEvent(3)));
+        events.add(new Event(20, -5, -5, 3, R.drawable.ic_pythone, 1, "Учить Python", MainActivity.createAccessIndicatorForEvent(3)));
     }
 
 

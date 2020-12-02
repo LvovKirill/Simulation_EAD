@@ -1,5 +1,6 @@
 package com.example.simulation_ead;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -7,8 +8,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.transition.Slide;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -18,10 +21,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdCallback;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
 import static com.example.simulation_ead.R.raw.sound_rest;
 
@@ -40,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static SharedPreferences sharedPreferences_lvl;
 
     private MediaPlayer sound;
+    private RewardedAd rewardedAd;
 
 
     @Override
@@ -48,14 +59,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Button btn_mind = (Button)findViewById(R.id.btn_mind);
         Button btn_happiness = (Button)findViewById(R.id.btn_happiness);
         Button btn_affairs = (Button)findViewById(R.id.btn_affairs);
 
-        ImageButton btn_admob_smile = (ImageButton)findViewById(R.id.advertising_smile);
+        ImageButton btn_settings = (ImageButton)findViewById(R.id.btn_settings);
+        ImageButton btn_shop = (ImageButton)findViewById(R.id.btn_shop);
+        ImageButton btn_friends = (ImageButton)findViewById(R.id.btn_friends);
 
+//        Button advertising_smile = (Button)findViewById(R.id.advertising_smile);
 
-
+//        ImageButton btn_admob_smile = (ImageButton)findViewById(R.id.advertising_smile);
 
         textView = (TextView)findViewById(R.id.textView);
         imageView = (ImageView)findViewById(R.id.image_lvl);
@@ -65,6 +80,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_mind.setOnClickListener(this);
         btn_happiness.setOnClickListener(this);
         btn_affairs.setOnClickListener(this);
+
+        btn_settings.setOnClickListener(this);
+        btn_shop.setOnClickListener(this);
+        btn_friends.setOnClickListener(this);
+//        advertising_smile.setOnClickListener(this);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus){
+
+            }
+        });
+    }
+
+    public void loadAd(){
+        this.rewardedAd = new RewardedAd(this, "ca-app-pub-3940256099942544/5224354917");
+        RewardedAdLoadCallback callback = new RewardedAdLoadCallback(){
+            @Override
+            public void onRewardedAdFailedToLoad(int i) {
+                super.onRewardedAdFailedToLoad(i);
+            }
+
+            @Override
+            public void onRewardedAdLoaded() {
+                super.onRewardedAdLoaded();
+                Log.i("TAG", "onRewardedAdLoaded");
+            }
+        };
+        this.rewardedAd.loadAd(new AdRequest.Builder().build(), callback);
+    }
+
+    public void showAd(){
+        if(this.rewardedAd.isLoaded()){
+            RewardedAdCallback callback = new RewardedAdCallback() {
+                @Override
+                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                    Log.i("TAG", "onUserEarnedReward");
+                }
+
+                @Override
+                public void onRewardedAdOpened() {
+                    super.onRewardedAdOpened();
+                    Log.i("TAG", "onRewardedAdOpened");
+                }
+
+                @Override
+                public void onRewardedAdClosed() {
+                    super.onRewardedAdClosed();
+                    Log.i("TAG", "onRewardedAdClosed");
+                }
+
+                @Override
+                public void onRewardedAdFailedToShow(int i) {
+                    super.onRewardedAdFailedToShow(i);
+                }
+            };
+            this.rewardedAd.show(this, callback);
+        }
+
     }
 
 
@@ -83,8 +157,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent affairs = new Intent(MainActivity.this, AffairsActivity.class);
                 startActivity(affairs);
                 break;
-            case R.id.advertising_smile:
-
+            case R.id.btn_settings:
+                Intent settings = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(settings);
+                break;
+            case R.id.btn_shop:
+                Intent shop = new Intent(MainActivity.this, ShopActivity.class);
+                startActivity(shop);
+                break;
+            case R.id.btn_friends:
+                Intent friends = new Intent(MainActivity.this, FriendsActivity.class);
+                startActivity(friends);
                 break;
         }
 

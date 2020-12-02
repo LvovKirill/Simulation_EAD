@@ -6,9 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="@drawable/background_lvl_style"
@@ -25,16 +23,18 @@
             android:layout_marginRight="20dp"
             tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/textEvant"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="30dp"
-        android:layout_toEndOf="@+id/imageEvant"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        tools:text="Поджечь свинью" />
+        <TextView
+            android:id="@+id/textEvant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="30dp"
+            android:layout_toStartOf="@+id/btn_make"
+            android:layout_toEndOf="@+id/imageEvant"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            tools:text="Поджечь свинью" />
 
     <Button
         android:id="@+id/btn_make"
