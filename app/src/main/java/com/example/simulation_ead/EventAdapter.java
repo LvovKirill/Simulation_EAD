@@ -239,7 +239,7 @@ if (p.status == true) {
         return result_mas;
     }
 
-    private void saveParams(){
+    public static void saveParams(){
         SharedPreferences.Editor sv_brain = MainActivity.sharedPreferences_brain.edit();
         sv_brain.putInt("progressbar_brain", StatusFragment.progress_mind);
         sv_brain.commit();
