@@ -32,9 +32,10 @@ public class FriendsActivity extends AppCompatActivity implements View.OnClickLi
 
 
     Friend mas[] = {
-            new Friend(R.drawable.image_lvl_1, "Михаил Портнов", "Android-разработка", R.drawable.ic_hamburger, "R.string.Mihail_Prt"),
-            new Friend(R.drawable.image_lvl_2, "Павел", "Хакер", R.drawable.ic_calculator, "R.string.Mihail_Prt"),
-            new Friend(R.drawable.image_lvl_3, "Аделя Хасанова", "Искуственный интеллект", R.drawable.ic_computer, "R.string.Mihail_Prt"),
+            new Friend(R.drawable.misha_portn, "Миша Портнов", "Android-разработка", R.drawable.ic_hamburger, "+ 10 к организовать IT школу Sumsung"),
+            new Friend(R.drawable.ana_buchinskaya, "Аня Бучинская", "Хакер", R.drawable.ic_calculator, "+ 18 к организовать ПП"),
+            new Friend(R.drawable.misha_portn, "Миша Портнов", "Android-разработка", R.drawable.ic_atom, "+ 10 к организовать IT школу Sumsung"),
+            new Friend(R.drawable.adelya_hasanova, "Аделя Хасанова", "Искуственный интеллект", R.drawable.ic_neuro_net, "+ 15 к написать нейросеть"),
             new Friend(R.drawable.image_lvl_4, "Михаил Портнов", "Android-разработка", R.drawable.ic_atom, "R.string.Mihail_Prt"),
             new Friend(R.drawable.image_lvl_5, "Михаил Портнов", "Android-разработка", R.drawable.ic_hamburger, "R.string.Mihail_Prt"),
             new Friend(R.drawable.image_lvl_6, "Михаил Портнов", "Android-разработка", R.drawable.ic_hamburger, "R.string.Mihail_Prt")

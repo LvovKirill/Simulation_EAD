@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static ImageView imageView_background;
     public static CardView cardView;
     public static int lvl = 1;
+    private ImageButton btn_admob_smile;
 
     public static SharedPreferences sharedPreferences_brain;
     public static SharedPreferences sharedPreferences_rest;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //        Button advertising_smile = (Button)findViewById(R.id.advertising_smile);
 
-        ImageButton btn_admob_smile = (ImageButton)findViewById(R.id.advertising_smile);
+        btn_admob_smile = (ImageButton)findViewById(R.id.advertising_smile);
 
         textView = (TextView)findViewById(R.id.textView);
         imageView = (ImageView)findViewById(R.id.image_lvl);
@@ -144,6 +145,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(friends);
                 }else{
                     Toast.makeText(this, "Требуется уровень 3", Toast.LENGTH_SHORT).show();
+
+                    Animation animRotateIn_big = AnimationUtils.loadAnimation(this, R.anim.shake_up);
+                    btn_admob_smile.startAnimation(animRotateIn_big);
                 }
                 break;
             case R.id.advertising_smile:
@@ -158,12 +162,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         @Override
                         public void onRewardedAdClosed() {
-                            // Ad closed.
+                            Toast.makeText(activityContext, "Досмотрите видео до конца", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onUserEarnedReward(@NonNull RewardItem reward) {
-                            // User earned reward.
+
+                            CustomToast.makeText(activityContext, "Повышен уровень счастья", Toast.LENGTH_SHORT, 1, R.drawable.ic_smiling).show();
+
+
+                            rewardedAd = new RewardedAd(activityContext,
+                                    "ca-app-pub-3940256099942544/5224354917");
+
+                            RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
+                                @Override
+                                public void onRewardedAdLoaded() {
+                                    // Ad successfully loaded.
+                                }
+
+                                @Override
+                                public void onRewardedAdFailedToLoad(int i) {
+                                    super.onRewardedAdFailedToLoad(i);
+                                }
+                            };
+                            rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
                         }
 
                         @Override

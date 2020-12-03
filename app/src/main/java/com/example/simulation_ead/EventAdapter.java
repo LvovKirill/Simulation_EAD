@@ -76,9 +76,9 @@ public class EventAdapter extends BaseAdapter {
 //        ((Button) view.findViewById(R.id.btn_make)).setBackgroundColor(createBackgroundForEventButton(p.status));
         ((Button) view.findViewById(R.id.btn_make)).setTextColor(createBackgroundForEventButton(p.status));
 
-        if (p.status==false) {
-            ((ImageView) view.findViewById(R.id.lock_image)).setImageResource(R.drawable.ic_padlock);
-        }
+
+            ((ImageView) view.findViewById(R.id.lock_image)).setImageResource(createImageForEventButton(p.status));
+
 
 
 if (p.status == true) {
@@ -193,6 +193,13 @@ if (p.status == true) {
             return Color.parseColor("white");
         else
             return Color.parseColor("black");
+    }
+
+    public int createImageForEventButton(boolean status){
+        if (status == true)
+            return R.drawable.ic_empty;
+        else
+            return R.drawable.ic_padlock;
     }
 
 
