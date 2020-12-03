@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,8 +23,10 @@ public class StatusFragment extends Fragment {
     public static ProgressBar progressbar_mind;
     public static ProgressBar progressbar_rest;
     public static ProgressBar progressbar_affairs;
+    public static LinearLayout linearLayout;
     public static ProgressBar progressbar_lvl;
     public static TextView textView_lvl;
+
 
     public static ImageView imageView_progress_brain;
     public static ImageView imageView_progress_rest;
@@ -65,8 +68,8 @@ public class StatusFragment extends Fragment {
         progressbar_mind = (ProgressBar)rootView.findViewById(R.id.progress_mind);
         progressbar_rest = (ProgressBar)rootView.findViewById(R.id.progress_rest);
         progressbar_affairs = (ProgressBar)rootView.findViewById(R.id.progress_affairs);
-        progressbar_lvl = (ProgressBar)rootView.findViewById(R.id.progress_lvl);
-        textView_lvl = (TextView)rootView.findViewById(R.id.lvl);
+        linearLayout = (LinearLayout) rootView.findViewById(R.id.deleted_progress_layout);
+
 
         imageView_progress_brain = (ImageView) rootView.findViewById(R.id.icon_brain);
         imageView_progress_rest = (ImageView) rootView.findViewById(R.id.icon_rest);
@@ -75,8 +78,14 @@ public class StatusFragment extends Fragment {
         progressbar_mind.setProgress(progress_mind);
         progressbar_rest.setProgress(progress_rest);
         progressbar_affairs.setProgress(progress_affairs);
-        progressbar_lvl.setProgress(progress_lvl);
-        textView_lvl.setText(Integer.valueOf(MainActivity.lvl).toString());
+
+        if(MainActivity.lvl<=MainActivity.mas_lvl.length) {
+            progressbar_lvl = (ProgressBar)rootView.findViewById(R.id.progress_lvl);
+            textView_lvl = (TextView)rootView.findViewById(R.id.lvl);
+
+            progressbar_lvl.setProgress(progress_lvl);
+            textView_lvl.setText(Integer.valueOf(MainActivity.lvl).toString());
+        }
 
         return rootView;
     }

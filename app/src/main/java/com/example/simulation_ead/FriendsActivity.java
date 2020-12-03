@@ -49,7 +49,7 @@ public class FriendsActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_research_frieds:
-                if (count_person<mas.length-1) {
+                if (count_person+1<mas.length) {
 
                     int number_person;
                     boolean znach = true;

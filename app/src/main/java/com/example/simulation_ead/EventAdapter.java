@@ -14,6 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,6 +75,10 @@ public class EventAdapter extends BaseAdapter {
         ((Button) view.findViewById(R.id.btn_make)).setText(createTextForEventButton(p.status));
 //        ((Button) view.findViewById(R.id.btn_make)).setBackgroundColor(createBackgroundForEventButton(p.status));
         ((Button) view.findViewById(R.id.btn_make)).setTextColor(createBackgroundForEventButton(p.status));
+
+        if (p.status==false) {
+            ((ImageView) view.findViewById(R.id.lock_image)).setImageResource(R.drawable.ic_padlock);
+        }
 
 
 if (p.status == true) {
@@ -173,7 +178,7 @@ if (p.status == true) {
         if (status == true)
             return "Сделать";
         else
-            return "Замок";
+            return "";
     }
 
     public int createColorTextForEventButton(boolean status){

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //        Button advertising_smile = (Button)findViewById(R.id.advertising_smile);
 
-//        ImageButton btn_admob_smile = (ImageButton)findViewById(R.id.advertising_smile);
+        ImageButton btn_admob_smile = (ImageButton)findViewById(R.id.advertising_smile);
 
         textView = (TextView)findViewById(R.id.textView);
         imageView = (ImageView)findViewById(R.id.image_lvl);
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_settings.setOnClickListener(this);
         btn_shop.setOnClickListener(this);
         btn_friends.setOnClickListener(this);
-//        advertising_smile.setOnClickListener(this);
+        btn_admob_smile.setOnClickListener(this);
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -92,54 +93,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
-    }
 
-    public void loadAd(){
-        this.rewardedAd = new RewardedAd(this, "ca-app-pub-3940256099942544/5224354917");
-        RewardedAdLoadCallback callback = new RewardedAdLoadCallback(){
+
+
+        rewardedAd = new RewardedAd(this,
+                "ca-app-pub-3940256099942544/5224354917");
+
+        RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
+            @Override
+            public void onRewardedAdLoaded() {
+                // Ad successfully loaded.
+            }
+
             @Override
             public void onRewardedAdFailedToLoad(int i) {
                 super.onRewardedAdFailedToLoad(i);
             }
-
-            @Override
-            public void onRewardedAdLoaded() {
-                super.onRewardedAdLoaded();
-                Log.i("TAG", "onRewardedAdLoaded");
-            }
         };
-        this.rewardedAd.loadAd(new AdRequest.Builder().build(), callback);
+        rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
     }
 
-    public void showAd(){
-        if(this.rewardedAd.isLoaded()){
-            RewardedAdCallback callback = new RewardedAdCallback() {
-                @Override
-                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
-                    Log.i("TAG", "onUserEarnedReward");
-                }
-
-                @Override
-                public void onRewardedAdOpened() {
-                    super.onRewardedAdOpened();
-                    Log.i("TAG", "onRewardedAdOpened");
-                }
-
-                @Override
-                public void onRewardedAdClosed() {
-                    super.onRewardedAdClosed();
-                    Log.i("TAG", "onRewardedAdClosed");
-                }
-
-                @Override
-                public void onRewardedAdFailedToShow(int i) {
-                    super.onRewardedAdFailedToShow(i);
-                }
-            };
-            this.rewardedAd.show(this, callback);
-        }
-
-    }
 
 
     @Override
@@ -166,14 +139,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(shop);
                 break;
             case R.id.btn_friends:
-                Intent friends = new Intent(MainActivity.this, FriendsActivity.class);
-                startActivity(friends);
+                if (lvl>2) {
+                    Intent friends = new Intent(MainActivity.this, FriendsActivity.class);
+                    startActivity(friends);
+                }else{
+                    Toast.makeText(this, "Требуется уровень 3", Toast.LENGTH_SHORT).show();
+                }
                 break;
+            case R.id.advertising_smile:
+
+                if (rewardedAd.isLoaded()) {
+                    Activity activityContext = MainActivity.this;
+                    RewardedAdCallback adCallback = new RewardedAdCallback() {
+                        @Override
+                        public void onRewardedAdOpened() {
+                            // Ad opened.
+                        }
+
+                        @Override
+                        public void onRewardedAdClosed() {
+                            // Ad closed.
+                        }
+
+                        @Override
+                        public void onUserEarnedReward(@NonNull RewardItem reward) {
+                            // User earned reward.
+                        }
+
+                        @Override
+                        public void onRewardedAdFailedToShow(int i) {
+                            super.onRewardedAdFailedToShow(i);
+                        }
+                    };
+                    rewardedAd.show(activityContext, adCallback);
+
+
+                } else {
+                    Toast.makeText(this, " uuuu", Toast.LENGTH_SHORT).show();
+                    Log.d("TAG", "The rewarded ad wasn't loaded yet.");
+                }
+                break;
+
         }
 
 
+        }
 
-    }
+
 
     static Level mas_lvl[] = {
             new Level(1, R.drawable.image_lvl_1, 10, R.drawable.lyzey_photo, "10 класс"),
@@ -189,10 +201,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     };
 
     public static void createLvl(){
-        textView.setText(mas_lvl[lvl-1].name_lvl);
-        imageView.setImageResource(mas_lvl[lvl-1].image_lvl);
-        imageView_background.setImageResource(mas_lvl[lvl-1].background_lvl);
-        StatusFragment.textView_lvl.setText(Integer.valueOf(lvl-1).toString());
+        if (lvl>mas_lvl.length) {
+            textView.setText(mas_lvl[mas_lvl.length - 1].name_lvl);
+            imageView.setImageResource(mas_lvl[mas_lvl.length - 1].image_lvl);
+            imageView_background.setImageResource(mas_lvl[mas_lvl.length - 1].background_lvl);
+        }else{
+            textView.setText(mas_lvl[lvl - 1].name_lvl);
+            imageView.setImageResource(mas_lvl[lvl - 1].image_lvl);
+            imageView_background.setImageResource(mas_lvl[lvl - 1].background_lvl);
+            StatusFragment.textView_lvl.setText(Integer.valueOf(lvl - 1).toString());
+        }
 
 
 //        StatusFragment.progress_mind = 100;
@@ -201,8 +219,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        StatusFragment.progress_lvl = 0;
     }
 
+    public static void moneyLvl(){
+        StatusFragment.linearLayout.removeAllViews();
+    }
+
     public static void newLvl(){
         lvl += 1;
+        if (lvl>mas_lvl.length){
+            moneyLvl();
+        }else{
         textView.setText(mas_lvl[lvl-1].name_lvl);
         imageView.setImageResource(mas_lvl[lvl-1].image_lvl);
         imageView_background.setImageResource(mas_lvl[lvl-1].background_lvl);
@@ -211,6 +236,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         StatusFragment.progress_rest = 100;
         StatusFragment.progress_affairs = 100;
         StatusFragment.progress_lvl = 0;
+        }
     }
 
 
@@ -237,7 +263,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static boolean createAccessIndicatorForEvent(int lvl){
      if (MainActivity.lvl<lvl)
          return false;
-     else return true;
+     else
+         return true;
     }
 
     @Override
