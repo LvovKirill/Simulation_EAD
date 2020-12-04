@@ -267,6 +267,10 @@ if (p.status == true) {
         SharedPreferences.Editor sv_progressbar_lvl = MainActivity.sharedPreferences_progressbar_lvl.edit();
         sv_progressbar_lvl.putInt("progressbar_progressbar_lvl", StatusFragment.progress_lvl);
         sv_progressbar_lvl.commit();
+
+        SharedPreferences.Editor sv_lvl = MainActivity.sharedPreferences_lvl.edit();
+        sv_lvl.putInt("textView_lvl", MainActivity.lvl);
+        sv_lvl.commit();
     }
 
 

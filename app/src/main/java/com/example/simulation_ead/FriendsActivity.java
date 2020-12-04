@@ -3,12 +3,17 @@ package com.example.simulation_ead;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +21,7 @@ public class FriendsActivity extends AppCompatActivity implements View.OnClickLi
 
     Button btn_research_frieds;
     LinearLayout layout_view_friends;
+    FrameLayout anim_friend_container;
 
     int count_person = 0;
 
@@ -26,8 +32,12 @@ public class FriendsActivity extends AppCompatActivity implements View.OnClickLi
 
         btn_research_frieds = (Button)findViewById(R.id.btn_research_frieds);
         layout_view_friends = (LinearLayout) findViewById(R.id.layout_view_friends);
+        anim_friend_container = (FrameLayout) findViewById(R.id.anim_friend_container);
 
         btn_research_frieds.setOnClickListener(this);
+
+        // получаем экземпляр FragmentTransaction
+
     }
 
 
@@ -67,6 +77,11 @@ public class FriendsActivity extends AppCompatActivity implements View.OnClickLi
                     }while (znach == false);
 
                     mas_zapis[count_person] = number_person;
+
+//                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//                    fragmentTransaction.replace(R.id.anim_friend_container, new NewFriendAnimFragment());
+//                    fragmentTransaction.commit();
+
 
                     final View view = getLayoutInflater().inflate(R.layout.friend_list_item, null);
                     ImageView image_person = (ImageView) view.findViewById(R.id.image_person);

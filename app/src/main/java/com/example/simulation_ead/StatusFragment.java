@@ -54,6 +54,9 @@ public class StatusFragment extends Fragment {
     public static void setProgress_lvl() {
         progressbar_lvl.setProgress(progress_lvl);
     }
+    public static void set_lvl(String lvl) {
+        textView_lvl.setText(lvl);
+    }
 
 
 

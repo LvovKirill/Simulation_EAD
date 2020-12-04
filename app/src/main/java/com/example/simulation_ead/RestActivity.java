@@ -30,7 +30,7 @@ public class RestActivity extends AppCompatActivity {
     }
 
     void fillData() {
-        events.add(new Event(-9, 10, -5, 1,R.drawable.ic_slumber,2, "Поспать", MainActivity.createAccessIndicatorForEvent(1)));
+        events.add(new Event(50, 50, 50, 1,R.drawable.ic_slumber,2, "Поспать", MainActivity.createAccessIndicatorForEvent(1)));
         events.add(new Event(-9, 10, -5, 1,R.drawable.ic_food,2, "Поесть в сталовой лицея", MainActivity.createAccessIndicatorForEvent(1)));
         events.add(new Event(-9, 10, -5, 1,R.drawable.ic_breakfast,2, "Поесть дома", MainActivity.createAccessIndicatorForEvent(1)));
         events.add(new Event(-9, 10, -5, 1,R.drawable.ic_stalovaya,2, "Поесть в сталовой МИФИ", MainActivity.createAccessIndicatorForEvent(1)));

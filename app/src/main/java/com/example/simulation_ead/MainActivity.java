@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void onUserEarnedReward(@NonNull RewardItem reward) {
 
-                            CustomToast.makeText(activityContext, "Повышен уровень счастья", Toast.LENGTH_SHORT, 1, R.drawable.ic_smiling).show();
+                            CustomToast.makeText(activityContext,Toast.LENGTH_SHORT,3).show();
 
 
                             rewardedAd = new RewardedAd(activityContext,
@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textView.setText(mas_lvl[lvl - 1].name_lvl);
             imageView.setImageResource(mas_lvl[lvl - 1].image_lvl);
             imageView_background.setImageResource(mas_lvl[lvl - 1].background_lvl);
-            StatusFragment.textView_lvl.setText(Integer.valueOf(lvl - 1).toString());
+            StatusFragment.textView_lvl.setText(Integer.valueOf(lvl).toString());
         }
 
 
@@ -293,6 +293,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStart() {
         loadParams();
         createLvl();
+//        createLvl();
 //        Intent questionIntent = new Intent(MainActivity.this,
 //                MindActivity.class);
 //        startActivityForResult(questionIntent, 5;
@@ -341,6 +342,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sharedPreferences_progressbar_lvl = getPreferences(MODE_PRIVATE);
         StatusFragment.progress_lvl = sharedPreferences_progressbar_lvl.getInt("progressbar_progressbar_lvl", 0);
         StatusFragment.setProgress_lvl();
+
+        sharedPreferences_lvl = getPreferences(MODE_PRIVATE);
+        MainActivity.lvl = sharedPreferences_lvl.getInt("textView_lvl", 1);
+        StatusFragment.set_lvl(Integer.toString(MainActivity.lvl));
+
+//        StatusFragment.setProgress_lvl();
 
 
 //        sharedPreferences_lvl = getPreferences(MODE_PRIVATE);
